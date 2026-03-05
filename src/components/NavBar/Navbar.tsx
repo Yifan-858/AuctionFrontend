@@ -22,11 +22,14 @@ const Navbar = () => {
 
   return (
     <div className="nav-bar">
+      <Link className="home-btn" to="/">
+        AuctionHouse
+      </Link>
       <div className="search-section">
         <form onSubmit={handleSearch} className="search-form">
           <input
             type="text"
-            placeholder="Search for items, sellers, or categories..."
+            placeholder="Search for title"
             className="search-input"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -35,20 +38,26 @@ const Navbar = () => {
             🔍
           </button>
         </form>
-        {isLoggedIn ? (
-          <>
-            <Link className="create-new-auction" to="/create">
-              Create New Auction
-            </Link>
-            <Link to={`/user/${id}`}>{user?.userName}</Link>
-          </>
-        ) : (
-          <>
-            <Link to="/signup">Signup</Link>
-            <Link to="/login">Login</Link>
-          </>
-        )}
       </div>
+      {isLoggedIn ? (
+        <div className="log-display-container">
+          <Link className="create-auction-link" to="/create">
+            Create New Auction
+          </Link>
+          <Link className="user-display" to={`/user/${id}`}>
+            Welcom, {user?.userName} ▼
+          </Link>
+        </div>
+      ) : (
+        <div className="log-display-container">
+          <Link className="user-display" to="/signup">
+            Signup
+          </Link>
+          <Link className="user-display" to="/login">
+            Login
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

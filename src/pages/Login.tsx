@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import type { UserLogin } from "../types/User";
+import "./Page.css";
 
 const Login = () => {
   const userContext = useContext(UserContext);
@@ -38,8 +39,10 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <Link to="/">Home</Link>
+    <div className="form-page">
+      <Link className="home-btn-arrow" to="/">
+        ◀ Home
+      </Link>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input

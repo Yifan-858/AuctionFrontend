@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import type { UserSignup } from "../types/User";
+import "./Page.css";
 
 const Signup = () => {
   const userContext = useContext(UserContext);
@@ -39,8 +40,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-container">
-      <Link to="/">Home</Link>
+    <div className="form-page">
+      <Link className="home-btn-arrow" to="/">
+        ◀ Home
+      </Link>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -51,7 +54,6 @@ const Signup = () => {
           onChange={handleChange}
           required
         />
-        <br />
         <input
           type="email"
           name="Email"
@@ -60,7 +62,6 @@ const Signup = () => {
           onChange={handleChange}
           required
         />
-        <br />
         <input
           type="password"
           name="Password"
@@ -69,7 +70,6 @@ const Signup = () => {
           onChange={handleChange}
           required
         />
-        <br />
         <button type="submit">Sign Up</button>
       </form>
       <p>

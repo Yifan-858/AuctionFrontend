@@ -3,6 +3,7 @@ import { API_URL } from "../services/api";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import type { User } from "../types/User";
+import "./Page.css";
 
 const UserDetails = () => {
   const { id } = useParams();
@@ -65,7 +66,9 @@ const UserDetails = () => {
 
   return (
     <div className="user-details-container">
-      <Link to="/">Home</Link>
+      <Link className="home-btn-arrow" to="/">
+        ◀ Home
+      </Link>
       <h2>User Details</h2>
       <p>
         <strong>Username:</strong> {user.userName}

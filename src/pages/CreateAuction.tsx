@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createAuction } from "../services/auctionService";
 import type { AuctionCreate } from "../types/Auction";
+import "./Page.css";
+import Navbar from "../components/NavBar/Navbar";
 
 const CreateAuction = () => {
   const navigate = useNavigate();
@@ -37,55 +39,57 @@ const CreateAuction = () => {
 
   return (
     <div>
-      <h2>Create Auction</h2>
+      <Navbar />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="title"
-          placeholder="Title"
-          value={form.title}
-          onChange={handleChange}
-          required
-        />
+      <div className="form-page">
+        <h2>Create Auction</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            name="title"
+            placeholder="Title"
+            value={form.title}
+            onChange={handleChange}
+            required
+          />
 
-        <textarea
-          name="description"
-          placeholder="Description"
-          value={form.description}
-          onChange={handleChange}
-          required
-        />
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={form.description}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="number"
-          name="startPrice"
-          placeholder="Start Price"
-          value={form.startPrice}
-          onChange={handleChange}
-          required
-        />
+          <input
+            type="number"
+            name="startPrice"
+            placeholder="Start Price"
+            value={form.startPrice}
+            onChange={handleChange}
+            required
+          />
 
-        <label>Start Date</label>
-        <input
-          type="datetime-local"
-          name="startDateUtc"
-          value={form.startDateUtc}
-          onChange={handleChange}
-          required
-        />
+          <label>Start Date</label>
+          <input
+            type="datetime-local"
+            name="startDateUtc"
+            value={form.startDateUtc}
+            onChange={handleChange}
+            required
+          />
 
-        <label>End Date</label>
-        <input
-          type="datetime-local"
-          name="endDateUtc"
-          value={form.endDateUtc}
-          onChange={handleChange}
-          required
-        />
+          <label>End Date</label>
+          <input
+            type="datetime-local"
+            name="endDateUtc"
+            value={form.endDateUtc}
+            onChange={handleChange}
+            required
+          />
 
-        <button type="submit">Create Auction</button>
-      </form>
-
+          <button type="submit">Create Auction</button>
+        </form>
+      </div>
       {error && <p>{error}</p>}
     </div>
   );

@@ -50,9 +50,15 @@ const BidPopup: React.FC<BidPopupProps> = ({
     <div className="modal-overlay">
       <div className="modal-content">
         {auction.highestBid ? (
-          <p>Current Highest Bid: {auction.highestBid} SEK</p>
+          <>
+            <p>Current Highest Bid</p>
+            <p className="current-amount">{auction.highestBid} SEK</p>
+          </>
         ) : (
-          <p>Start Bid: {auction.startPrice} SEK</p>
+          <>
+            <p>Start Bid</p>
+            <p className="current-amount">{auction.startPrice} SEK</p>
+          </>
         )}
 
         <input

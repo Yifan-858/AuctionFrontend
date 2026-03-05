@@ -7,6 +7,7 @@ import BidPopup from "../components/Bid/BidPopup";
 import BidHistory from "../components/Bid/BidHistory";
 import type { Bid } from "../types/Bid";
 import { getBidsByAuction } from "../services/bidService";
+import Navbar from "../components/NavBar/Navbar";
 
 const AuctionDetails = () => {
   const { id } = useParams();
@@ -63,32 +64,42 @@ const AuctionDetails = () => {
 
   const closedAuction = (
     <div className="auction-details">
-      <Link to="/">Home</Link>
+      <Link to="/">◀ Home</Link>
+      <p>Seller:{auction.userName}</p>
       <h1>{auction.title}</h1>
-      <h4>Description:</h4> {auction.description}
-      {auction.soldPrice ? (
-        <p>Sold Price: {auction.soldPrice} SEK</p>
-      ) : (
-        <p>Not Sold</p>
-      )}
-      <p>
+      <p className="end-date">
         End Date:
         {new Date(auction.endDateUtc).toLocaleString()}
       </p>
-      <p>Seller:{auction.userName}</p>
+      {auction.soldPrice ? (
+        <p className="sold-price">Sold Price: {auction.soldPrice} SEK</p>
+      ) : (
+        <p className="sold-price">Not Sold</p>
+      )}
+      <h4>Description:</h4>
+      <p>{auction.description}</p>
     </div>
   );
 
   const openAuction = (
     <div className="auction-details">
-      <Link to="/">Home</Link>
+      <Link className="home-btn-arrow" to="/">
+        ◀ Home
+      </Link>
+      <p>Seller:{auction.userName}</p>
       <h1>{auction.title}</h1>
-      <h4>Description:</h4> {auction.description}
+      <p className="end-date">
+        End Date:
+        {new Date(auction.endDateUtc).toLocaleString()}
+      </p>
       {auction.highestBid ? (
-        <>
-          <p>Current Bid: {auction.highestBid} SEK</p>
-          <button onClick={handleViewHistory}>See Bids</button>
-        </>
+        <div className="bid-container">
+          <div className="bid-detail">
+            <p>Current Bids ∙</p>
+            <button onClick={handleViewHistory}>See Bids</button>
+          </div>
+          <p className="highest-bid">{auction.highestBid} SEK</p>
+        </div>
       ) : (
         <p>Start Price: {auction.startPrice} SEK</p>
       )}
@@ -99,11 +110,9 @@ const AuctionDetails = () => {
           Place a bit
         </button>
       )}
-      <p>
-        End Date:
-        {new Date(auction.endDateUtc).toLocaleString()}
-      </p>
-      <p>Seller:{auction.userName}</p>
+      <h4>Description:</h4>
+      <p>{auction.description}</p>
+
       <BidPopup
         auction={auction}
         isOpen={isBidOpen}
@@ -118,7 +127,12 @@ const AuctionDetails = () => {
     </div>
   );
 
-  return auction.isOpen ? openAuction : closedAuction;
+  return (
+    <>
+      <Navbar />
+      {auction.isOpen ? openAuction : closedAuction}
+    </>
+  );
 };
 
 export default AuctionDetails;

@@ -1,0 +1,177 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  padding: 0 5rem;
+}
+
+.home-btn-arrow {
+  margin-bottom: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  width: fit-content;
+  color: black;
+}
+
+/*Auction Details Page*/
+.auction-details {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 3rem;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auction-details h1 {
+  font-size: 2rem;
+}
+
+.auction-details h4 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.auction-details p {
+  font-size: 1rem;
+}
+
+.end-date {
+  margin-bottom: 2rem;
+}
+
+.bid-detail {
+  display: flex;
+}
+
+.highest-bid,
+.sold-price {
+  font-weight: 600;
+}
+
+.bid-btn {
+  margin-top: 1rem;
+  margin-left: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #fff873;
+  padding: 0.7rem 2rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.bid-btn:hover {
+  opacity: 0.85;
+}
+
+/*Create Auction*/
+/* Form Pages (Login / Signup / Create) */
+.form-page {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 3rem;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-page h2 {
+  font-size: 1.8rem;
+}
+
+.form-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-page input,
+.form-page textarea {
+  padding: 0.6rem;
+  border: 1px solid black;
+  font-size: 0.9rem;
+}
+
+.form-page textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-page label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-page button {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #fff873;
+  padding: 0.7rem 2rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.form-page button:hover {
+  opacity: 0.85;
+}
+
+/* User Details Page */
+
+.user-details-container {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 3rem;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.user-details-container h2 {
+  font-size: 1.8rem;
+}
+
+.user-details-container p {
+  font-size: 1rem;
+}
+
+.user-details-container strong {
+  font-weight: 600;
+}
+
+.user-details-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.user-details-container input {
+  padding: 0.6rem;
+  border: 1px solid black;
+  font-size: 0.9rem;
+}
+
+.user-details-container button {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 5px solid #fff873;
+  background-color: white;
+  padding: 0.7rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.user-details-container button:hover {
+  opacity: 0.85;
+}

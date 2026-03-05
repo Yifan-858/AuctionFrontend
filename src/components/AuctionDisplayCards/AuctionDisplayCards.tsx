@@ -1,6 +1,7 @@
 import React from "react";
-import type { Auction } from "../types/Auction";
+import type { Auction } from "../../types/Auction";
 import { Link } from "react-router-dom";
+import "./AuctionDisplayCard.css";
 
 type AuctionDisplayCardsProps = {
   auctions: Auction[];
@@ -14,23 +15,24 @@ const AuctionDisplayCards: React.FC<AuctionDisplayCardsProps> = ({
   }
 
   return (
-    <div
-      className="auction-cards-container"
-      style={{ display: "flex", gap: "16px" }}
-    >
+    <div className="auction-cards-container">
       {auctions.map((auction) => (
         <div key={auction.id} className="auction-card">
           <h3>{auction.title}</h3>
-          <p>Start Price: {auction.startPrice} SEK</p>
-          <p>
+          <p className="auction-start-price">
+            Start Price: {auction.startPrice} SEK
+          </p>
+          <p className="auction-time">
             Start:
             {new Date(auction.startDateUtc).toLocaleString()}
           </p>
-          <p>
+          <p className="auction-time">
             End:
             {new Date(auction.endDateUtc).toLocaleString()}
           </p>
-          <Link to={`/auction/${auction.id}`}>View Auction</Link>
+          <Link className="view-auction-btn" to={`/auction/${auction.id}`}>
+            View Auction
+          </Link>
         </div>
       ))}
     </div>

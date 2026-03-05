@@ -44,31 +44,33 @@ const SearchResults = () => {
   return (
     <div>
       <Navbar />
-      <h2>Search results for "{query}"</h2>
-      <div className="filter-buttons" style={{ marginBottom: "1rem" }}>
-        <button
-          onClick={() => setFilter("open")}
-          className={filter === "open" ? "active-filter-btn" : ""}
-        >
-          Open
-        </button>
-        <button
-          onClick={() => setFilter("closed")}
-          className={filter === "closed" ? "active-filter-btn" : ""}
-        >
-          Closed
-        </button>
-        <button
-          onClick={() => setFilter("all")}
-          className={filter === "all" ? "active-filter-btn" : ""}
-        >
-          All
-        </button>
+      <div className="filter-container">
+        <p className="filter-title">Search results for "{query}"</p>
+        <div className="filter-buttons" style={{ marginBottom: "1rem" }}>
+          <button
+            onClick={() => setFilter("open")}
+            className={filter === "open" ? "active-filter-btn" : ""}
+          >
+            Open
+          </button>
+          <button
+            onClick={() => setFilter("closed")}
+            className={filter === "closed" ? "active-filter-btn" : ""}
+          >
+            Closed
+          </button>
+          <button
+            onClick={() => setFilter("all")}
+            className={filter === "all" ? "active-filter-btn" : ""}
+          >
+            All
+          </button>
+        </div>
       </div>
       {filteredAuctions.length > 0 ? (
-        <>
+        <div className="card-container">
           <AuctionDisplayCards auctions={filteredAuctions} />
-        </>
+        </div>
       ) : (
         <p>No auctions found for "{query}"</p>
       )}
