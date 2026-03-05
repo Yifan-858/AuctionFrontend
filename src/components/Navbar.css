@@ -1,0 +1,9 @@
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-section {
+  display: flex;
+}

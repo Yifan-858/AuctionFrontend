@@ -1,0 +1,41 @@
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import "./Navbar.css";
+
+const Navbar = () => {
+  const userContext = useContext(UserContext);
+  const isLoggedIn = userContext?.isLoggedIn;
+  const user = userContext?.user;
+  const id = user?.id;
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div className="nav-bar">
+      <div className="search-section">
+        <form onSubmit={handleSearch} className="search-form">
+          <input
+            type="text"
+            placeholder="Search for items, sellers, or categories..."
+            className="search-input"
+          />
+          <button type="submit" className="search-btn">
+            🔍
+          </button>
+        </form>
+        {isLoggedIn ? (
+          <Link to={`/user/${id}`}>{user?.userName}</Link>
+        ) : (
+          <>
+            <Link to="/signup">Signup</Link>
+            <Link to="/login">Login</Link>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
