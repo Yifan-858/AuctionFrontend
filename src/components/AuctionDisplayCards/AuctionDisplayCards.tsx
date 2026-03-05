@@ -19,9 +19,16 @@ const AuctionDisplayCards: React.FC<AuctionDisplayCardsProps> = ({
       {auctions.map((auction) => (
         <div key={auction.id} className="auction-card">
           <h3>{auction.title}</h3>
-          <p className="auction-start-price">
-            Start Price: {auction.startPrice} SEK
-          </p>
+          {auction.highestBid ? (
+            <p className="auction-start-price">
+              Curent Bid: {auction.highestBid} SEK
+            </p>
+          ) : (
+            <p className="auction-start-price">
+              Start Price: {auction.startPrice} SEK
+            </p>
+          )}
+
           <p className="auction-time">
             Start:
             {new Date(auction.startDateUtc).toLocaleString()}

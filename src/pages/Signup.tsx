@@ -29,7 +29,7 @@ const Signup = () => {
 
     try {
       await signup(form);
-      setFeedback("Signup successful!");
+      setFeedback("Signup successful! Going to login page...");
       setTimeout(() => {
         navigate("/login");
       }, 2000);
