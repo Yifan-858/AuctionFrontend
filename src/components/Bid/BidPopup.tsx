@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { addBid } from "../services/bidService";
-import type { Auction } from "../types/Auction";
+import { addBid } from "../../services/bidService";
+import type { Auction } from "../../types/Auction";
 import "./Bid.css";
 
 interface BidPopupProps {

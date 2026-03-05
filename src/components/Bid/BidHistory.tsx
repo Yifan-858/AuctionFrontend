@@ -1,6 +1,6 @@
 // components/BidHistory.tsx
 import React from "react";
-import type { Bid } from "../types/Bid";
+import type { Bid } from "../../types/Bid";
 import "./Bid.css";
 
 interface BidHistoryProps {

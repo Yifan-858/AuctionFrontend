@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getAuctionsByTitle } from "../services/auctionService";
 import type { Auction } from "../types/Auction";
-import AuctionDisplayCards from "../components/AuctionDisplayCards";
-import Navbar from "../components/Navbar";
+import AuctionDisplayCards from "../components/AuctionDisplayCards/AuctionDisplayCards";
+import Navbar from "../components/NavBar/Navbar";
 
 type Filter = "all" | "open" | "closed";
 

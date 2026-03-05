@@ -3,8 +3,8 @@ import { UserContext } from "../context/UserContext";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getAuctionById } from "../services/auctionService";
 import type { Auction } from "../types/Auction";
-import BidPopup from "../components/BidPopup";
-import BidHistory from "../components/BidHistory";
+import BidPopup from "../components/Bid/BidPopup";
+import BidHistory from "../components/Bid/BidHistory";
 import type { Bid } from "../types/Bid";
 import { getBidsByAuction } from "../services/bidService";
 

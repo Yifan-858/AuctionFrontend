@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAllAuctions } from "../services/auctionService";
-import AuctionDisplayCards from "../components/AuctionDisplayCards";
+import AuctionDisplayCards from "../components/AuctionDisplayCards/AuctionDisplayCards";
 import type { Auction } from "../types/Auction";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar/Navbar";
 
 type Filter = "all" | "open" | "closed";
 
