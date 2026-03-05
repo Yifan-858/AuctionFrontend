@@ -73,10 +73,7 @@ const UserDetails = () => {
         <strong>Email:</strong> {user.email}
       </p>
 
-      <button
-        onClick={() => setShowPasswordForm(!showPasswordForm)}
-        style={{ margin: "10px 0" }}
-      >
+      <button onClick={() => setShowPasswordForm(!showPasswordForm)}>
         {showPasswordForm ? "Cancel" : "Update Password"}
       </button>
 

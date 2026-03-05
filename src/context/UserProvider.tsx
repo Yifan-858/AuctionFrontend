@@ -7,7 +7,10 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [token, setToken] = useState<string | null>(
     localStorage.getItem("token"),
   );
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
 
   const signup = async (user: UserSignup) => {
     await userService.signup(user);
@@ -16,13 +19,16 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const login = async (loginInfo: UserLogin) => {
     const { token, user } = await userService.login(loginInfo);
     localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
     setToken(token);
     setUser(user);
   };
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setToken(null);
+    setUser(null);
   };
 
   const isLoggedIn = !!token;

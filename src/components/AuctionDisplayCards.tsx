@@ -16,25 +16,18 @@ const AuctionDisplayCards: React.FC<AuctionDisplayCardsProps> = ({
   return (
     <div
       className="auction-cards-container"
-      style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}
+      style={{ display: "flex", gap: "16px" }}
     >
       {auctions.map((auction) => (
         <div key={auction.id} className="auction-card">
           <h3>{auction.title}</h3>
+          <p>Start Price: {auction.startPrice} SEK</p>
           <p>
-            {auction.description.length > 100
-              ? auction.description.slice(0, 100) + "..."
-              : auction.description}
-          </p>
-          <p>
-            <strong>Start Price:</strong> ${auction.startPrice.toFixed(2)}
-          </p>
-          <p>
-            <strong>Start:</strong>{" "}
+            Start:
             {new Date(auction.startDateUtc).toLocaleString()}
           </p>
           <p>
-            <strong>End:</strong>{" "}
+            End:
             {new Date(auction.endDateUtc).toLocaleString()}
           </p>
           <Link to={`/auction/${auction.id}`}>View Auction</Link>
