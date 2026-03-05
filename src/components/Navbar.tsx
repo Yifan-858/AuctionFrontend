@@ -8,6 +8,8 @@ const Navbar = () => {
   const isLoggedIn = userContext?.isLoggedIn;
   const user = userContext?.user;
   const id = user?.id;
+
+  // const handleCreateAuction =
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
   };
@@ -26,7 +28,12 @@ const Navbar = () => {
           </button>
         </form>
         {isLoggedIn ? (
-          <Link to={`/user/${id}`}>{user?.userName}</Link>
+          <>
+            <Link className="create-new-auction" to="/create">
+              Create New Auction
+            </Link>
+            <Link to={`/user/${id}`}>{user?.userName}</Link>
+          </>
         ) : (
           <>
             <Link to="/signup">Signup</Link>

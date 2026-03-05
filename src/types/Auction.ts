@@ -18,6 +18,7 @@ export interface Auction {
 }
 
 export interface AuctionCreate {
+  id: number;
   title: string;
   description: string;
   startPrice: number;

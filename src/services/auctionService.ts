@@ -5,11 +5,15 @@ import type { AuctionCreate } from "../types/Auction";
 export const createAuction = async (
   auction: AuctionCreate,
 ): Promise<AuctionCreate> => {
+  const token = localStorage.getItem("token");
+
+  if (!token) throw new Error("User not logged in");
+
   const response = await fetch(`${API_URL}/auction/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer `,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(auction),
   });
