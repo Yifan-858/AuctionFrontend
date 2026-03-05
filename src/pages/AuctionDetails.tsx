@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getAuctionById } from "../services/auctionService";
 import type { Auction } from "../types/Auction";
 import BidPopup from "../components/BidPopup";
@@ -11,6 +11,7 @@ import { getBidsByAuction } from "../services/bidService";
 const AuctionDetails = () => {
   const { id } = useParams();
   const userContext = useContext(UserContext);
+  const navigate = useNavigate();
   const [auction, setAuction] = useState<Auction | null>(null);
   const [loading, setLoading] = useState(true);
   const [isBidOpen, setIsBidOpen] = useState(false);
@@ -19,6 +20,8 @@ const AuctionDetails = () => {
 
   const currentUserId = userContext?.user?.id;
   const isOwner = currentUserId == auction?.userId;
+
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchAuction = async () => {
@@ -39,10 +42,16 @@ const AuctionDetails = () => {
   }, [id, isBidOpen]);
 
   const handleBidClick = () => {
+    if (!token) {
+      navigate("/signup");
+    }
     setIsBidOpen(true);
   };
 
   const handleViewHistory = async () => {
+    if (!token) {
+      navigate("/signup");
+    }
     if (!auction) return;
     const data = await getBidsByAuction(auction.id);
     setBids(data);

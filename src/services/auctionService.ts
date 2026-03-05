@@ -40,3 +40,13 @@ export const getAllAuctions = async (): Promise<Auction[]> => {
 
   return response.json();
 };
+
+export const getAuctionsByTitle = async (title: string): Promise<Auction[]> => {
+  const response = await fetch(`${API_URL}/auction/search?title=${title}`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch auctions by title");
+  }
+
+  return response.json();
+};

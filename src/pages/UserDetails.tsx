@@ -36,7 +36,7 @@ const UserDetails = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate("/");
   };
 
   const handlePasswordUpdate = async (e: React.FormEvent) => {

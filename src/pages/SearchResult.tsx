@@ -1,30 +1,36 @@
 import { useEffect, useState } from "react";
-import { getAllAuctions } from "../services/auctionService";
-import AuctionDisplayCards from "../components/AuctionDisplayCards";
+import { useLocation } from "react-router-dom";
+import { getAuctionsByTitle } from "../services/auctionService";
 import type { Auction } from "../types/Auction";
+import AuctionDisplayCards from "../components/AuctionDisplayCards";
 import Navbar from "../components/Navbar";
 
 type Filter = "all" | "open" | "closed";
 
-const Home = () => {
+const SearchResults = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get("query") || "";
+
   const [auctions, setAuctions] = useState<Auction[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<Filter>("open");
 
   useEffect(() => {
-    const fetchAuctions = async () => {
+    const fetchResults = async () => {
+      setLoading(true);
       try {
-        const data = await getAllAuctions();
-        setAuctions(data);
+        const results = await getAuctionsByTitle(query);
+        setAuctions(results);
       } catch (err) {
-        console.error(err);
+        console.error("Failed to fetch search results:", err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchAuctions();
-  }, []);
+    if (query) fetchResults();
+  }, [query]);
 
   const filteredAuctions = auctions.filter((a) => {
     if (filter === "all") return true;
@@ -33,11 +39,12 @@ const Home = () => {
     return true;
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Loading results...</p>;
 
   return (
     <div>
       <Navbar />
+      <h2>Search results for "{query}"</h2>
       <div className="filter-buttons" style={{ marginBottom: "1rem" }}>
         <button
           onClick={() => setFilter("open")}
@@ -58,9 +65,15 @@ const Home = () => {
           All
         </button>
       </div>
-      <AuctionDisplayCards auctions={filteredAuctions} />
+      {filteredAuctions.length > 0 ? (
+        <>
+          <AuctionDisplayCards auctions={filteredAuctions} />
+        </>
+      ) : (
+        <p>No auctions found for "{query}"</p>
+      )}
     </div>
   );
 };
 
-export default Home;
+export default SearchResults;

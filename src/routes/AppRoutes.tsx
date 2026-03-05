@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -6,6 +5,7 @@ import Signup from "../pages/Signup";
 import AuctionDetails from "../pages/AuctionDetails";
 import CreateAuction from "../pages/CreateAuction";
 import UserDetails from "../pages/UserDetails";
+import SearchResult from "../pages/SearchResult";
 
 const AppRoutes = () => {
   return (
@@ -16,6 +16,7 @@ const AppRoutes = () => {
       <Route path="/user/:id" element={<UserDetails />} />
       <Route path="/auction/:id" element={<AuctionDetails />} />
       <Route path="/create" element={<CreateAuction />} />
+      <Route path="/search" element={<SearchResult />} />
     </Routes>
   );
 };

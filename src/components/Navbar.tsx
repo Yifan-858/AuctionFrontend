@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "./Navbar.css";
 
@@ -9,9 +9,15 @@ const Navbar = () => {
   const user = userContext?.user;
   const id = user?.id;
 
-  // const handleCreateAuction =
-  const handleSearch = (e: React.FormEvent) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    if (!searchTerm.trim()) return;
+
+    navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+    setSearchTerm("");
   };
 
   return (
@@ -22,6 +28,8 @@ const Navbar = () => {
             type="text"
             placeholder="Search for items, sellers, or categories..."
             className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button type="submit" className="search-btn">
             🔍
